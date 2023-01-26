@@ -76,7 +76,7 @@ def tobs ():
 
     #query
     query = db.select(
-        [measurements.station, measurements.tobs].where(measurements.tobs >= 0, measurements.station == 'USC00519281'))
+        [measurements.station, measurements.tobs]).where(measurements.station == 'USC00519281')
     result = engine.execute(query).fetchall()
     response = jsonify({'result': [dict(row) for row in result]})
     return response
